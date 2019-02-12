@@ -1,1 +1,1 @@
-# infinite-scroll-message
+Simple React Redux App using openweathermap API
