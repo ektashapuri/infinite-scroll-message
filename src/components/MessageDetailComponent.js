@@ -11,24 +11,23 @@ constructor(props){
 
   componentDidMount(){
     window.addEventListener('scroll', this.handleScroll);
-}
+  }
 
   componentWillUnmount() {
-      window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll(event) {
     const { handleScroll, count, data } = this.props;
-    //   let scrollTop = event.srcElement.body.scrollTop; //600px
-    // //  let windowHeight = //1200px/2 <= scrolltop
-    //   handleScroll(data.length + 10);
-    const bottom = document.documentElement.scrollTop >= document.documentElement.offsetHeight/2;
+    //check if the page is scrolled half way up to call the method to fetch more messages
+    const bottom = window.scrollY >= document.documentElement.offsetHeight/2;
     if (bottom) {
       handleScroll(data.length + 10);
     }
   }
 
   createMessageComp(){
+    //map function to render each component with details
     return this.props.data.map( (message, index) => {
       return (
         <IndividualMessageComp
@@ -38,13 +37,9 @@ constructor(props){
       )
     })
   }
-  //onScroll={this.handleScroll}
   render() {
     return(
-      <div
-        className="detailComp"
-        onScroll={this.handleScroll}
-      >
+      <div className="detailComp" onScroll={this.handleScroll}>
         {this.createMessageComp()}
       </div>
     )

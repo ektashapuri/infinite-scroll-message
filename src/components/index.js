@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {fetchMessages, fetchMoreMessages} from '../action/action';
 import MessageDetailComponent from './MessageDetailComponent';
 
+//load the main container
 class MessageContainer extends Component {
 
   constructor(props){
@@ -12,17 +13,18 @@ class MessageContainer extends Component {
   }
 
   componentDidMount() {
+    //get the first load of messages
     const { fetchMessages } = this.props;
     fetchMessages();
   }
 
   handleScroll(countIndex){
+    //get the next load of message after scroll - ten at  time
     const { fetchMoreMessages } = this.props;
     fetchMoreMessages(countIndex);
   }
 
   render() {
-    //console.log(this.props);
     const { details } = this.props.messages;
     const { count, messages } = details;
     let messageCount = details.messages ? details.messages.length : '';
@@ -49,6 +51,7 @@ const mapStateToProps = (state) => {
     messages: state.message
   }
 }
+//added to enable dispatching the action
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchMessages: fetchMessages,

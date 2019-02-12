@@ -17,6 +17,7 @@ export function receiveMoreMessages(details){
   }
 }
 
+//dispatch action to get the first load of messages
 export function fetchMessages(place){
   const url = 'http://message-list.appspot.com/messages';
   return function (dispatch){
@@ -28,6 +29,7 @@ export function fetchMessages(place){
   }
 }
 
+//dispatch action to get the next load of messages
 export function fetchMoreMessages(place){
   const url = 'http://message-list.appspot.com/messages';
   return function (dispatch){

@@ -35,6 +35,7 @@
     "moment": "^2.24.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "react-easy-swipe": "0.0.17",
     "react-infinite-scroller": "^1.2.4",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",

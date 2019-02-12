@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { RECEIVE_MESSAGES, RECEIVE_MORE_MESSAGES } from '../action/action';
 
+//get the message for the firt load
 function message(state = {
   isFetching: false,
   details: {},
@@ -22,14 +23,15 @@ function message(state = {
       return state
   }
 }
-
+//get the next load of messages after scroll
 function contactMessage(state, mess){
   const newResponse = mess;
   const oldMessage = state.details.messages;
+  //using spread operator to merge the existing list with the new list of messages
   newResponse.messages = [...oldMessage, ...newResponse.messages];
   return newResponse
 }
-
+//merge to the rootReducer
 const rootReducer = combineReducers({
   message
 })
