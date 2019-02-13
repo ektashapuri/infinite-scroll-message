@@ -2,6 +2,7 @@
   "name": "infinite-scroll-message",
   "version": "1.0.0",
   "description": "Infite Scroll Message ReactJS project with hot code reloading",
+  "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src"
@@ -10,6 +11,9 @@
     "example",
     "heroku"
   ],
+  "engines": {
+    "node": "10.x"
+  },
   "author": "Ekta Shapuri",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
