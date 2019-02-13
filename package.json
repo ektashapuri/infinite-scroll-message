@@ -6,6 +6,10 @@
     "start": "node server.js",
     "lint": "eslint src"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "Ekta Shapuri",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
