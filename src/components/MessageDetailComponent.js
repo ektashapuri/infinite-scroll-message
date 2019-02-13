@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import IndividualMessageComp from './IndividualMessageComp';
-//import InfiniteScroll from 'react-infinite-scroller';
 
 export default class MessageDetailComponent extends Component {
 
 constructor(props){
-  super(props)
-  this.handleScroll = this.handleScroll.bind(this)
+  super(props);
+  this.handleScroll = this.handleScroll.bind(this);
+  this.deleteMessage = this.deleteMessage.bind(this);
 }
 
   componentDidMount(){
@@ -15,6 +15,20 @@ constructor(props){
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  deleteMessage(id){
+    //get the id of the deleted message and delete the corresponding message from the list
+    const {data, deleteMessage,count,pageToken} = this.props;
+    const newMessageData = data.filter(function(message,index) {
+      return message.id !== id;
+    })
+    const dataToSend = {
+      pageToken,
+      count,
+      messages: newMessageData
+    }
+    deleteMessage(dataToSend);
   }
 
   handleScroll(event) {
@@ -30,10 +44,12 @@ constructor(props){
     //map function to render each component with details
     return this.props.data.map( (message, index) => {
       return (
-        <IndividualMessageComp
-          key={index}
-          messageData={message}
-        />
+
+          <IndividualMessageComp
+            key={index}
+            messageData={message}
+            deleteMessage={this.deleteMessage}
+          />
       )
     })
   }

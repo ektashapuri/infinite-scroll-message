@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { RECEIVE_MESSAGES, RECEIVE_MORE_MESSAGES } from '../action/action';
+import { RECEIVE_MESSAGES, RECEIVE_MORE_MESSAGES, DELETE_MESSAGE } from '../action/action';
 
 //get the message for the firt load
 function message(state = {
@@ -8,6 +8,7 @@ function message(state = {
 }, action) {
   switch (action.type) {
     case RECEIVE_MESSAGES:
+    case DELETE_MESSAGE:
       return Object.assign({}, state, {
         isFetching: false,
         details: action.details,
@@ -17,8 +18,8 @@ function message(state = {
         return Object.assign({}, state, {
           isFetching: false,
           details: contactMessage(state, action.details),
-
         })
+
     default:
       return state
   }

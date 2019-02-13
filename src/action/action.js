@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES'
 export const RECEIVE_MORE_MESSAGES = 'RECEIVE_MORE_MESSAGES'
+export const DELETE_MESSAGE = 'DELETE_MESSAGE'
 
 export function receiveMessage(details){
   return{
@@ -13,7 +14,14 @@ export function receiveMessage(details){
 export function receiveMoreMessages(details){
   return{
     type: RECEIVE_MORE_MESSAGES,
-    details,
+    details
+  }
+}
+
+export function deleteMessage(details) {
+  return {
+    type: DELETE_MESSAGE,
+    details
   }
 }
 

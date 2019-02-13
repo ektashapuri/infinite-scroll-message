@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchMessages, fetchMoreMessages} from '../action/action';
+import {fetchMessages, fetchMoreMessages, deleteMessage} from '../action/action';
 import MessageDetailComponent from './MessageDetailComponent';
 
 //load the main container
@@ -26,7 +26,9 @@ class MessageContainer extends Component {
 
   render() {
     const { details } = this.props.messages;
-    const { count, messages } = details;
+    const { count, messages, pageToken} = details;
+    //refresh the new message list
+    const { deleteMessage } = this.props;
     let messageCount = details.messages ? details.messages.length : '';
     return (
       <div>
@@ -38,6 +40,8 @@ class MessageContainer extends Component {
           <MessageDetailComponent
             data={messages}
             count={count}
+            pageToken={pageToken}
+            deleteMessage={deleteMessage}
             handleScroll={this.handleScroll}/>
         }
         </div>
@@ -55,7 +59,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchMessages: fetchMessages,
-    fetchMoreMessages: fetchMoreMessages
+    fetchMoreMessages: fetchMoreMessages,
+    deleteMessage: deleteMessage
   }, dispatch)
 }
 
