@@ -32,10 +32,11 @@ class MessageContainer extends Component {
     let messageCount = details.messages ? details.messages.length : '';
     return (
       <div>
-        <div className="wrapper">
-          <h1 className="stickyHeader">Messages {messageCount}</h1>
+        <div className="header">
+          <h1 className="header__title">Messages
+            <div className="header-message-count">{messageCount}</div>
+          </h1>
         </div>
-        <div className="messageWrapper">
         {count &&
           <MessageDetailComponent
             data={messages}
@@ -44,7 +45,6 @@ class MessageContainer extends Component {
             deleteMessage={deleteMessage}
             handleScroll={this.handleScroll}/>
         }
-        </div>
       </div>
     )
   }

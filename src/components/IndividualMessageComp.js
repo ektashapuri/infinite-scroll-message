@@ -22,18 +22,20 @@ export default class IndividualMessageComp extends Component {
         onSwipeStart={this.onSwipeStart}
         onSwipeMove={this.onSwipeMove}
         onSwipeEnd={this.onSwipeEnd}>
-      <div className="detailWrapper">
-            <div className="contentWrapper">
-              <div className="imgContainer">
-                <img className="authorImg" src={"http://message-list.appspot.com"+author.photoUrl}></img>
-              </div>
-              <div className="msgName">
-                <div className="authorName">{author.name}</div>
-                <div className="msg">{content}</div>
-              </div>
-            </div>
-            <div className="timestamp">Last updated: {moment(lastUpdated).format("dddd,	MMMM Do YYYY")}</div>
-      </div>
+        <div className="message__wrapper">
+           <div className="message__row">
+             <div className="message-author__wrapper">
+               <img className="message-author__image" src={"http://message-list.appspot.com"+author.photoUrl}></img>
+             </div>
+             <div className="message__text">
+               <div className="message-author-name">{author.name}</div>
+               <div className="message-content">{content}</div>
+             </div>
+           </div>
+           <div className="message__row message__row--right">
+             <span className="message-timestamp">Last updated: {moment(lastUpdated).format("dddd,  MMMM Do YYYY")}</span>
+           </div>
+         </div>
       </Swipe>
     )
   }

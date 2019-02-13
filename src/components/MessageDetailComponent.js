@@ -55,7 +55,7 @@ constructor(props){
   }
   render() {
     return(
-      <div className="detailComp" onScroll={this.handleScroll}>
+      <div className="messages__container" onScroll={this.handleScroll}>
         {this.createMessageComp()}
       </div>
     )
