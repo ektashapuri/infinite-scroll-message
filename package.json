@@ -1,7 +1,7 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "infinite-scroll-message",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "Infite Scroll Message ReactJS project with hot code reloading",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src"
