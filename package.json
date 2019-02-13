@@ -2,9 +2,9 @@
   "name": "infinite-scroll-message",
   "version": "1.0.0",
   "description": "Infite Scroll Message ReactJS project with hot code reloading",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node app.js",
     "lint": "eslint src"
   },
   "keywords": [

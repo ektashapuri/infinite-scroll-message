@@ -1,10 +1,32 @@
-const http = require('http');
-const port=process.env.PORT || 3000
-const server = http.createServer((req, res) => {
-res.statusCode = 200;
-res.setHeader('Content-Type', 'text/html');
-res.end('<h1>Hello World</h1>');
+var path = require('path');
+var webpack = require('webpack');
+var express = require('express');
+var config = require('./webpack.config');
+
+var app = express();
+var compiler = webpack(config);
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  publicPath: config.output.publicPath
+}));
+
+app.set( 'port', ( process.env.PORT || 5000 ));
+
+// Start node server
+app.listen( app.get( 'port' ), function() {
+  console.log( 'Node server is running on port ' + app.get( 'port' ));
+  });
+
+app.use(require('webpack-hot-middleware')(compiler));
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
-server.listen(port,() => {
-console.log(`Server running at port `+port);
+
+app.listen(3000, function(err) {
+  if (err) {
+    return console.error(err);
+  }
+
+  console.log('Listening at http://localhost:3000/');
 });
