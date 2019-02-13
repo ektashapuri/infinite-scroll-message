@@ -27,7 +27,7 @@ export function deleteMessage(details) {
 
 //dispatch action to get the first load of messages
 export function fetchMessages(place){
-  const url = 'http://message-list.appspot.com/messages';
+  const url = 'https://message-list.appspot.com/messages';
   return function (dispatch){
     return fetch(url)
     .then(response => response.json())
@@ -39,7 +39,7 @@ export function fetchMessages(place){
 
 //dispatch action to get the next load of messages
 export function fetchMoreMessages(place){
-  const url = 'http://message-list.appspot.com/messages';
+  const url = 'https://message-list.appspot.com/messages';
   return function (dispatch){
     return fetch(url)
     .then(response => response.json())
